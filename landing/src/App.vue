@@ -1,6 +1,6 @@
 <template>
   <div :class="{ 'dark': isDarkMode }">
-  <div class="grid place-items-center h-screen bg-light dark:bg-dark">
+  <div class="grid place-items-center h-screen bg-light dark:bg-dark transition-colors">
       <div class="flex flex-col justify-center text-center max-w-[60rem] text-dark dark:text-light">
         <button @click="toggleDark" class="cursor-default">
           <img src="./assets/cs.jpeg" class="logo h-[40vh] mx-auto rounded-3xl mb-12 cursor-pointer" alt="logo" />
