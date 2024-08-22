@@ -20,6 +20,17 @@
           </button>
         </div>
       </div>
+      <footer class="absolute bottom-4 flex gap-4">
+        <a class="hover:opacity-70 transition-opacity cursor-pointer" href="https://github.com/LHSS-CS-Club">
+          <img src="./assets/icons/GitHub Logo.svg" class="w-4 h-4" alt="GitHub icon" />
+        </a>
+        <a class="hover:opacity-70 transition-opacity cursor-pointer" href="https://www.instagram.com/lhsscsclub/">
+          <img src="./assets/icons/Instagram Logo.svg" class="w-4 h-4" alt="Instagram icon" />
+        </a>
+        <a class="hover:opacity-70 transition-opacity cursor-pointer" href="mailto:lhss@csclub.tech">
+          <img src="./assets/icons/Envelope Closed.svg" class="w-4 h-4" alt="Envelope icon" />
+        </a>
+      </footer>
     </div>
   </div>
 </template>
