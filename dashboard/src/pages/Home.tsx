@@ -1,12 +1,9 @@
 import usePocketbase from "../hooks/usePocketbase";
 
 const Home = () => {
+  const { authStore } = usePocketbase();
 
-    const { authStore } = usePocketbase();
+  return <div>Home</div>;
+};
 
-    return (
-        <div>Home</div>
-    )
-}
-
-export default Home
+export default Home;
