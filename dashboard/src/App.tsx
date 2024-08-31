@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, Link } from 'react-router-dom'
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -33,8 +33,9 @@ const App = () => {
         }
         <Route path='home' element={<Dashboard />}>
           <Route index element={<Home />} />
+          <Route path="*" element={<><h1>404</h1><p>We couldn't find this page. <Link to='/'>Go back to safety.</Link></p></>} />
         </Route>
-        <Route path="*" element={<>404 not found</>} />
+        <Route path="*" element={<div className='p-6'><h1>404</h1><p>We couldn't find this page. <Link to='/'>Go back to safety.</Link></p></div>} />
       </Routes>
     </div>
   );

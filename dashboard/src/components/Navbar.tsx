@@ -13,13 +13,21 @@ const links = [
     href: "/home",
   },
   {
-    name: "Dashboard",
-    href: "/dashboard",
+    name: "Attendance",
+    href: "/attendance",
+  },
+  {
+    name: "Lessons",
+    href: "/lessons",
+  },
+  {
+    name: "Projects",
+    href: "/projects",
   },
   {
     name: "Settings",
-    href: "/settings",
-  },
+    href: "/settings"
+  }
 ] as Link[];
 
 
