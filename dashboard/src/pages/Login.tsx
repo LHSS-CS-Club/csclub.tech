@@ -35,7 +35,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-[#0c0d24]">
+    <div className="flex justify-center items-center h-screen">
       <Toaster richColors theme="dark" />
       <form
         className="p-8 flex flex-col gap-4 w-1/2 max-w-96 shadow-black rounded-lg"
@@ -58,14 +58,14 @@ const Login = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button className="p-2 bg-blue-600 hover:bg-blue-500 rounded transition-colors">
+        <button className="p-2 bg-slate-600 hover:bg-slate-500 rounded transition-colors">
           {isSubmitting ? "Loading..." : "Login"}
         </button>
         <span className="text-center text-gray-400">
           Don't have an account?{" "}
           <Link
             href="/signup"
-            className="text-blue-400 underline hover:no-underline"
+            className="text-slate-400 underline hover:no-underline"
           >
             Sign up
           </Link>

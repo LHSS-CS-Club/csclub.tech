@@ -3,11 +3,14 @@ import { createRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 import { PocketbaseProvider } from './contexts/PocketbaseContext'
+import { BrowserRouter } from 'react-router-dom'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <PocketbaseProvider>
-      <App />
-    </PocketbaseProvider>
+    <BrowserRouter>
+      <PocketbaseProvider>
+        <App />
+      </PocketbaseProvider>
+    </BrowserRouter>
   </StrictMode>,
 )

@@ -1,4 +1,4 @@
-import { Route, Switch } from "wouter";
+import { Routes, Route, Navigate } from 'react-router-dom'
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -8,32 +8,26 @@ import { Top, Side } from "./components/Navbar";
 
 import usePocketbase from "./hooks/usePocketbase";
 
+import { Toaster } from 'sonner';
+
 const App = () => {
   const { authStore } = usePocketbase();
 
-  if (!authStore.isValid) {
-    return (
-      <Switch>
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
-        <Route>404 Not Found</Route>
-      </Switch>
-    );
-  }
-
   return (
     <div>
-      <Top />
-      <div className="flex">
-        <Side />
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-
-          <Route>404 Not Found</Route>
-        </Switch>
-      </div>
+      <Toaster />
+      <Routes>
+        <Route index element = {(authStore.isValid === null) ? <Navigate to='/login' /> : <Navigate to='/home' />} />
+        <Route path="login" element={(authStore.isValid === null) ? <Login /> : <Navigate to='/home' />} />
+        <Route path="signup" element={(authStore.isValid === null) ? <Signup /> : <Navigate to='/home' />} />
+        <Route path='home' element={<>
+          <Top />
+          <Side />
+        </>}>
+          <Route index element={<Home />} />
+        </Route>
+        <Route path="*" element={<>404 not found</>} />
+      </Routes>
     </div>
   );
 }
