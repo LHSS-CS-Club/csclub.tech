@@ -1,5 +1,6 @@
+import { RecordModel } from "pocketbase";
 import usePocketbase from "../hooks/usePocketbase"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 interface Project {
   title: string;
@@ -14,7 +15,7 @@ const Projects = () => {
 
   const pocketbase = usePocketbase()
 
-  const [projects, setProjects] = useState<Project[]>([
+  const [projects, setProjects] = useState<Project[] | RecordModel[]>([
     {
       title: "Pocketbase",
       author: "Pocketbase Team",
@@ -24,6 +25,14 @@ const Projects = () => {
       type: "web"
     }
   ])
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      const fetchedProjects = await pocketbase.collection('projects').getFullList();
+      setProjects(fetchedProjects);
+    };
+    fetchProjects();
+  }, [pocketbase])
 
   return (
     <div>
@@ -41,7 +50,7 @@ const Projects = () => {
   )
 }
 
-const ProjectCard = (props: Project) => (
+const ProjectCard = (props: Project | RecordModel) => (
   <div className="bg-neutral-800 p-4 rounded-lg">
     <h3 className="text-lg font-semibold mb-2">{props.title}</h3>
     <p className="text-sm mb-2">by {props.author}</p>
