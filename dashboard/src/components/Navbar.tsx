@@ -10,23 +10,23 @@ interface Link {
 const links = [
   {
     name: "Home",
-    href: "/home",
+    href: "/dashboard",
   },
   {
     name: "Attendance",
-    href: "/attendance",
+    href: "/dashboard/attendance",
   },
   {
     name: "Lessons",
-    href: "/lessons",
+    href: "/dashboard/lessons",
   },
   {
     name: "Projects",
-    href: "/projects",
+    href: "/dashboard/projects",
   },
   {
     name: "Settings",
-    href: "/settings"
+    href: "/dashboard/settings"
   }
 ] as Link[];
 

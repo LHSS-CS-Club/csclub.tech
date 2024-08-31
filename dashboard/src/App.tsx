@@ -4,6 +4,10 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Home from "./pages/Home";
 import Dashboard from './pages/Dashboard';
+import Attendance from './pages/Attendance';
+import Settings from './pages/Settings';
+import Lessons from './pages/Lessons';
+import Projects from './pages/Projects';
 
 import usePocketbase from "./hooks/usePocketbase";
 
@@ -19,9 +23,9 @@ const App = () => {
         {
           (authStore.isValid) ? (
             <>
-              <Route index element={<Navigate to='/home' />} />
-              <Route path="login" element={<Navigate to='/home' />} />
-              <Route path="signup" element={<Navigate to='/home' />} />
+              <Route index element={<Navigate to='/dashboard' />} />
+              <Route path="login" element={<Navigate to='/dashboard' />} />
+              <Route path="signup" element={<Navigate to='/dashboard' />} />
             </>
           ) : (
             <>
@@ -31,8 +35,12 @@ const App = () => {
             </>
           )
         }
-        <Route path='home' element={<Dashboard />}>
+        <Route path='dashboard' element={<Dashboard />}>
           <Route index element={<Home />} />
+          <Route path='attendance' element={<Attendance />} />
+          <Route path='lessons' element={<Lessons />} />
+          <Route path='projects' element={<Projects />} />
+          <Route path='settings' element={<Settings />} />
           <Route path="*" element={<><h1>404</h1><p>We couldn't find this page. <Link to='/'>Go back to safety.</Link></p></>} />
         </Route>
         <Route path="*" element={<div className='p-6'><h1>404</h1><p>We couldn't find this page. <Link to='/'>Go back to safety.</Link></p></div>} />
