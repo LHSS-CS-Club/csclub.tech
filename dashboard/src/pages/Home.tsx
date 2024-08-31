@@ -10,6 +10,7 @@ const Home = () => {
   useEffect(() => {
     const fetchUsers = async () => {
       const users = await pocketbase.collection('users').getFullList();
+      console.log(users)
       setNumUsers(users.length);
     };
     fetchUsers();

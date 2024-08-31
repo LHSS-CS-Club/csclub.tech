@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom'
 
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -22,7 +22,10 @@ const App = () => {
         <Route path="signup" element={(authStore.isValid === null) ? <Signup /> : <Navigate to='/home' />} />
         <Route path='home' element={<>
           <Top />
-          <Side />
+          <div className='flex'>
+            <Side />
+            <Outlet />
+          </div>
         </>}>
           <Route index element={<Home />} />
         </Route>
