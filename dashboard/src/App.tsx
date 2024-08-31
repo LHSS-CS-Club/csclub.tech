@@ -20,21 +20,9 @@ const App = () => {
     <div>
       <Toaster theme="dark" visibleToasts={10} />
       <Routes>
-        {
-          (authStore.isValid) ? (
-            <>
-              <Route index element={<Navigate to='/dashboard' />} />
-              <Route path="login" element={<Navigate to='/dashboard' />} />
-              <Route path="signup" element={<Navigate to='/dashboard' />} />
-            </>
-          ) : (
-            <>
-              <Route index element={<Navigate to='/login' />} />
-              <Route path="login" element={<Login />} />
-              <Route path="signup" element={<Signup />} />
-            </>
-          )
-        }
+        <Route index element={(authStore.isValid) ? <Navigate to='/dashboard' /> : <Navigate to='/login' />} />
+        <Route path="login" element={(authStore.isValid) ? <Navigate to='/dashboard' /> : <Login />} />
+        <Route path="signup" element={(authStore.isValid) ? <Navigate to='/dashboard' /> : <Signup />} />
         <Route path='dashboard' element={<Dashboard />}>
           <Route index element={<Home />} />
           <Route path='attendance' element={<Attendance />} />
