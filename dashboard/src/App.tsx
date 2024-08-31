@@ -18,7 +18,7 @@ const App = () => {
   
   return (
     <div>
-      <Toaster theme="dark" richColors />
+      <Toaster theme="dark" visibleToasts={10} />
       <Routes>
         {
           (authStore.isValid) ? (

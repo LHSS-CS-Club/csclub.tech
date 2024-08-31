@@ -12,11 +12,11 @@ const Dashboard = () => {
       <div className='flex'>
         <Side />
         {(authStore.isValid) ? 
-          <div className='p-6'>
+          <div className='p-6 w-[75vw]'>
             <Outlet />
           </div>
           : 
-          <div className='p-6'>
+          <div className='p-6 w-[75vw]'>
             <h1>You are not logged in!</h1>
             <p>Log in <Link to='/login'>here.</Link></p>
           </div>

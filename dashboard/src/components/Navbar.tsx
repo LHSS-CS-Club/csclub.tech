@@ -60,7 +60,7 @@ export const Side = () => {
   };
 
   return (
-    <div className="w-[16rem] p-4 flex flex-col">
+    <div className="!w-[20vw] p-4 flex flex-col">
       {links.map((link, index) => (
         <Link to={link.href} key={index} className={`p-2 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all ${(location.pathname === link.href) ? "font-bold text-white bg-neutral-700 rounded-md" : ""}`}>{link.name}</Link>
       ))}
