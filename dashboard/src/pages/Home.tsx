@@ -6,11 +6,11 @@ const Home = () => {
 
   const [numUsers, setNumUsers] = useState(0);
   const [numLessons, setNumLessons] = useState(0);
+  const [numProjects, setNumProjects] = useState(0);
 
   useEffect(() => {
     const fetchUsers = async () => {
       const users = await pocketbase.collection('users').getFullList();
-      console.log(users)
       setNumUsers(users.length);
     };
     fetchUsers();
@@ -20,6 +20,12 @@ const Home = () => {
       setNumLessons(lessons.length);
     };
     fetchLessons();
+
+    const fetchProjects = async () => {
+      const projects = await pocketbase.collection('projects').getFullList();
+      setNumProjects(projects.length);
+    };
+    fetchProjects();
   }, [pocketbase]);
 
   return (
@@ -27,9 +33,9 @@ const Home = () => {
       <h1 className="text-3xl font-bold mb-4">Welcome</h1>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <DashboardCard title="Total Members" value={numUsers} />
-        <DashboardCard title="Previous Lessons" value={numLessons} />
-        <DashboardCard title="Projects" value="5" />
+        <DashboardCard title="Members" value={numUsers} />
+        <DashboardCard title="Lessons" value={numLessons} />
+        <DashboardCard title="Projects" value={numProjects} />
       </div>
 
       <div className="mt-8">
@@ -62,7 +68,6 @@ const ActivityFeed = () => (
       <p className="font-semibold">Project "Web Dev 101" created</p>
       <p className="text-sm text-neutral-400">1 day ago</p>
     </li>
-    {/* Add more activity items as needed */}
   </ul>
 );
 

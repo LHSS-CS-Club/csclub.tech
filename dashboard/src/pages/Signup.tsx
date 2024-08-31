@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react";
 import usePocketbase from "../hooks/usePocketbase";
-import { Link, useLocation } from "wouter";
+import { Link, useNavigate } from "react-router-dom"
 import { Toaster, toast } from "sonner";
 
 const Signup = () => {
@@ -13,7 +13,7 @@ const Signup = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const pocketbase = usePocketbase();
-  const [, navigate] = useLocation();
+  const navigate = useNavigate();
 
   if (authStore.isValid) {
     navigate("/");
@@ -93,7 +93,7 @@ const Signup = () => {
         <span className="text-center text-gray-400">
           Already have an account?{" "}
           <Link
-            href="/login"
+            to="/login"
             className="text-slate-400 underline hover:no-underline"
           >
             Log in

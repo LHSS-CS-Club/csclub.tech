@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'wouter';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import usePocketbase from "../hooks/usePocketbase";
 import { toast } from 'sonner'
 
@@ -37,22 +37,24 @@ export const Top = () => {
 }
 
 export const Side = () => {
-  const [location] = useLocation();
+  const location = useLocation();
 
-  const pocketbase = usePocketbase();
+  const { authStore } = usePocketbase();
+
+  const navigate = useNavigate();
 
   const handleLogout = async () => {
-    pocketbase.authStore.clear();
-    // Redirect to login page or home page after logout
-    window.location.href = '/login'; // or wherever you want to redirect
+    authStore.clear();
+
+    navigate('/login')
     
-    toast.success("joe")
+    toast.success("Logged out successfully.")
   };
 
   return (
     <div className="w-[16rem] p-4 flex flex-col">
       {links.map((link, index) => (
-        <Link to={link.href} key={index} className={`p-2 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all ${(location === link.href) ? "font-bold text-white bg-neutral-700 rounded-md" : ""}`}>{link.name}</Link>
+        <Link to={link.href} key={index} className={`p-2 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all ${(location.pathname === link.href) ? "font-bold text-white bg-neutral-700 rounded-md" : ""}`}>{link.name}</Link>
       ))}
       <button className={`p-2 text-neutral-400 hover:text-white bf-transparent hover:bg-neutral-700 rounded-md transition-all text-left`} onClick={handleLogout}>Log out</button>
     </div>

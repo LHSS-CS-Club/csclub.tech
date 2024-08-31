@@ -1,7 +1,7 @@
 import { FormEvent, useState } from "react";
 import usePocketbase from "../hooks/usePocketbase";
-import { Link, useLocation } from "wouter";
-import { Toaster, toast } from "sonner";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const Login = () => {
   const { authStore } = usePocketbase();
@@ -12,7 +12,7 @@ const Login = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const pocketbase = usePocketbase();
-  const [, navigate] = useLocation();
+  const navigate = useNavigate();
 
   if (authStore.isValid) {
     navigate("/");
@@ -36,7 +36,6 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen">
-      <Toaster richColors theme="dark" />
       <form
         className="p-8 flex flex-col gap-4 w-1/2 max-w-96 shadow-black rounded-lg"
         onSubmit={handleLogin}
@@ -64,7 +63,7 @@ const Login = () => {
         <span className="text-center text-gray-400">
           Don't have an account?{" "}
           <Link
-            href="/signup"
+            to="/signup"
             className="text-slate-400 underline hover:no-underline"
           >
             Sign up
