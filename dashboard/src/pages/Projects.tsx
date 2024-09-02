@@ -66,7 +66,8 @@ const Projects = () => {
   return (
     <div>
       <h1>Projects</h1>
-      <p>Have a cool project? Submit it here! You can demo it during Project Showcase.</p>
+      <p>Have a cool project? Submit it here! You can demo it during Project Showcase.</p><br/>
+      <p>Want to edit or remove a project? Email a club executive at <button className="text-blue-500 hover:underline" onClick={() => {navigator.clipboard.writeText('lhss@csclub.tech'); toast.success('Email copied to clipboard!')}}>lhss@csclub.tech</button>.</p>
       <h2 className="mt-8 text-2xl font-bold">Add a project</h2>
       <form 
         onSubmit={onSubmit}
