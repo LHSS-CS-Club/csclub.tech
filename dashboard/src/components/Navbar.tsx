@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import usePocketbase from "../hooks/usePocketbase";
 import { toast } from 'sonner'
 
@@ -49,14 +49,10 @@ export const Side = () => {
 
   const { authStore } = usePocketbase();
 
-  const navigate = useNavigate();
-
   const handleLogout = async () => {
     authStore.clear();
 
-    navigate('/login')
-    
-    toast.success("Logged out successfully.")
+    window.location.href = '/login'
   };
 
   return (
