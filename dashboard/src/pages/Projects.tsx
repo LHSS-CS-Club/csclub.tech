@@ -29,7 +29,6 @@ const Projects = () => {
   
   const [form, setForm] = useState({
     title: '',
-    author: '',
     description: '',
     github: '',
     demo: '',
@@ -55,12 +54,13 @@ const Projects = () => {
 
   const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
-
-
+   
     await pocketbase.collection('projects').create({
-      ...form
+      ...form,
+      author: pocketbase.authStore.model?.name
     })
+
+    toast.success(<div>Project submitted successfully! <button className="text-blue-500 hover:underline" onClick={() => {location.reload()}}>Reload the page.</button></div>);
   }
 
   return (
@@ -76,7 +76,7 @@ const Projects = () => {
           e.preventDefault();
           const form = e.target as HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement;
           form.setCustomValidity("");
-          toast.error(`Please fill out the "${form.name}" field.`);
+          toast.error(`An error occured with the "${form.name}" field.`);
         }}
       >
         <div className="flex flex-col mt-4">
@@ -111,7 +111,7 @@ const Projects = () => {
       </form>
 
       <h2 className="mt-8 text-2xl font-bold">All projects</h2>
-      <div className="mt-4 grid grid-cols-2">
+      <div className="mt-4 grid grid-cols-2 gap-4">
         {
           projects.map((project, index) => (
             <ProjectCard key={index} {...project} />
@@ -127,7 +127,7 @@ const ProjectCard = (props: Project | RecordModel) => (
     <h3 className="text-lg font-semibold mb-2">{props.title}</h3>
     <p className="text-sm mb-2">by {props.author}</p>
     <p className="mb-4">{props.description}</p>
-    <div className="flex justify-between items-center mb-4">
+    <div className="flex justify-between items-center">
       <span className="bg-blue-500 text-white px-2 py-1 rounded-md text-sm">
         {props.type}
       </span>

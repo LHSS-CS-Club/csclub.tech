@@ -1,6 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
 import usePocketbase from "../hooks/usePocketbase";
-import { toast } from 'sonner'
 
 interface Link {
   name: string;
