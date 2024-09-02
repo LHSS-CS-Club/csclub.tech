@@ -6,6 +6,7 @@ import { Toaster, toast } from "sonner";
 const Signup = () => {
   const { authStore } = usePocketbase();
 
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
@@ -40,12 +41,13 @@ const Signup = () => {
 
     try {
       await pocketbase.collection("users").create({
-        email,
-        password,
-        passwordConfirm,
+        name: name,
+        email: email,
+        password: password,
+        passwordConfirm: passwordConfirm,
       });
 
-      navigate("/home");
+      navigate("/login");
       toast.success("Account created successfully.");
     } catch (error: any) {
       if (error?.status === 400) {
@@ -66,6 +68,13 @@ const Signup = () => {
         <h2 className="text-[5rem] text-transparent bg-clip-text bg-gradient-to-b to-[#636280] from-white text-center font-[800]">
           Sign Up
         </h2>
+        <input
+          className="appearance-none px-4 py-2 text-lg bg-transparent ring-1 ring-white/20 rounded-lg"
+          type="text"
+          placeholder="Full Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <input
           className="appearance-none px-4 py-2 text-lg bg-transparent ring-1 ring-white/20 rounded-lg"
           type="email"

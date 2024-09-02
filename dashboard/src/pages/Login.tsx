@@ -23,7 +23,7 @@ const Login = () => {
     setIsSubmitting(true);
     try {
       await pocketbase.collection("users").authWithPassword(email, password);
-      navigate("/home");
+      navigate("/dashboard");
       toast.success("Logged in successfully.");
     } catch (error: any) {
       if (error?.status === 400) {
