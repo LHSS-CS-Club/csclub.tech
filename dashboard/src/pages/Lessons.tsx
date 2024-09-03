@@ -23,7 +23,6 @@ const Lessons: React.FC = () => {
   const [LR, setLR] = useState<Lesson[]>([]);
   const [CR, setCR] = useState<Lesson[]>([]);
   const [CB, setCB] = useState<Lesson[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchLessons = async () => {
@@ -47,17 +46,14 @@ const Lessons: React.FC = () => {
         setLR(lessonRecords);
         setCR(challengeRecords);
         setCB(combinedRecords);
-                setLoading(false);
       } catch (err) {
         toast.error('Failed to fetch lessons');
-        setLoading(false);
       }
     };
 
     fetchLessons();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
 
   const rooms = [
     { title: 'Lesson Room', lessons: LR },
