@@ -28,7 +28,7 @@ const Settings = () => {
       <form className="mt-4" onSubmit={handleSubmit}>
         <div>
           <label className="text-xl font-bold">
-            Name
+            Full Name
           </label><br/>
           <input type="text" name="name" value={name} onChange={(e) => {setName(e.target.value); setChanged(true)}} className="bg-neutral-800 text-neutral-100 p-2 rounded-lg mt-2" required />
         </div>
