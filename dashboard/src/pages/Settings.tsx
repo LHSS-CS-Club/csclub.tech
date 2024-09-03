@@ -24,6 +24,7 @@ const Settings = () => {
     <div>
       <h1>Settings</h1>
       <p>Update your profile here.</p>
+      <p>Need help? Email a club executive at <button className="text-blue-500 hover:underline" onClick={() => {navigator.clipboard.writeText('lhss@csclub.tech'); toast.success('Email copied to clipboard!')}}>lhss@csclub.tech</button>.</p>
       <form className="mt-4" onSubmit={handleSubmit}>
         <div>
           <label className="text-xl font-bold">
