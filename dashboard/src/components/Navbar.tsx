@@ -31,13 +31,16 @@ const links = [
 
 
 export const Top = () => {
+
+  const { authStore } = usePocketbase();
+
   return (
     <div className="flex items-center justify-between w-full border-b border-b-neutral-700 p-4">
       <div className="font-bold">
-        CS Club Dashboard
+        <Link to='/' className='text-white'>CS Club Dashboard</Link>
       </div>
       <div>
-
+        {authStore.model?.name}
       </div>
     </div>
   )
@@ -55,7 +58,7 @@ export const Side = () => {
   };
 
   return (
-    <div className="!w-[20vw] p-4 flex flex-col">
+    <div className="!w-[20vw] p-4 flex flex-col gap-1">
       {links.map((link, index) => (
         <Link to={link.href} key={index} className={`p-2 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all ${(location.pathname === link.href) ? "font-bold text-white bg-neutral-700 rounded-md" : ""}`}>{link.name}</Link>
       ))}
