@@ -18,7 +18,7 @@ const App = () => {
   
   return (
     <div>
-      <Toaster theme="dark" richColors />
+      <Toaster theme="dark" visibleToasts={10} />
       <Routes>
         <Route index element={(authStore.isValid) ? <Navigate to='/dashboard' /> : <Navigate to='/login' />} />
         <Route path="login" element={(authStore.isValid) ? <Navigate to='/dashboard' /> : <Login />} />
