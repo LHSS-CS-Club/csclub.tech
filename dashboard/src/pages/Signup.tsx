@@ -47,6 +47,11 @@ const Signup = () => {
         passwordConfirm: passwordConfirm,
       });
 
+      await pocketbase.collection('activity').create({
+        event: `${name} joined!`,
+        created: new Date().toISOString()
+      })  
+
       navigate("/login");
       toast.success("Account created successfully.");
     } catch (error: any) {

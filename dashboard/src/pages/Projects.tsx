@@ -60,6 +60,11 @@ const Projects = () => {
       author: pocketbase.authStore.model?.name
     })
 
+    await pocketbase.collection('activity').create({
+      event: `${pocketbase.authStore.model?.name} submitted a new project: ${form.title}`,
+      created: new Date().toISOString()
+    })
+
     toast.success(<div>Project submitted successfully! <button className="text-blue-500 hover:underline" onClick={() => {location.reload()}}>Reload the page.</button></div>);
   }
 
@@ -115,7 +120,15 @@ const Projects = () => {
       <div className="mt-4 grid grid-cols-2 gap-4">
         {
           projects.map((project, index) => (
-            <ProjectCard key={index} {...project} />
+            <ProjectCard 
+              key={index}
+              title={project.title}
+              author={project.author}
+              description={project.description}
+              github={project.github}
+              demo={project.demo}
+              type={project.type}
+            />
           ))
         }
       </div>

@@ -38,6 +38,7 @@ const Home = () => {
 
     const fetchActivity = async () => {
       const activity = await pocketbase.collection('activity').getFullList<Activity>();
+      activity.sort((a, b) => new Date(b.created).getTime() - new Date(a.created).getTime());
       for (let item of activity) {
         const date = new Date(item.created);
         item.created = formatDistanceToNow(date, { addSuffix: true });
