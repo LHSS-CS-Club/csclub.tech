@@ -68,7 +68,8 @@ const Lessons: React.FC = () => {
   return (
     <div>
       <h1>Lessons</h1>
-      <div className='flex flex-col gap-8'>
+      <p>View all previous CS Club lessons here!</p>
+      <div className='flex flex-col gap-8 mt-8'>
         {rooms.map((room, id) => (
           <div key={`lessons-room-${id}`}>
             <h2 className='text-xl font-bold'>{room.title}</h2>

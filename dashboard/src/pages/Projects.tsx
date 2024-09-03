@@ -123,7 +123,7 @@ const Projects = () => {
   )
 }
 
-const ProjectCard = (props: Project | RecordModel) => (
+const ProjectCard = (props: Project) => (
   <div className="bg-neutral-800 p-4 rounded-lg">
     <h3 className="text-lg font-semibold mb-2">{props.title}</h3>
     <p className="text-sm mb-2">by {props.author}</p>

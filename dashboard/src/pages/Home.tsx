@@ -1,5 +1,11 @@
 import { useEffect, useState } from "react";
 import usePocketbase from "../hooks/usePocketbase";
+import { formatDistanceToNow } from 'date-fns';
+
+interface Activity {
+  event: string;
+  created: string | Date;
+}
 
 const Home = () => {
   const pocketbase = usePocketbase();
@@ -7,6 +13,9 @@ const Home = () => {
   const [numUsers, setNumUsers] = useState(0);
   const [numLessons, setNumLessons] = useState(0);
   const [numProjects, setNumProjects] = useState(0);
+  const [activities, setActivities] = useState<Activity[]>([
+    { event: "Loading...", created: "just now" },
+  ]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -26,6 +35,16 @@ const Home = () => {
       setNumProjects(projects.length);
     };
     fetchProjects();
+
+    const fetchActivity = async () => {
+      const activity = await pocketbase.collection('activity').getFullList<Activity>();
+      for (let item of activity) {
+        const date = new Date(item.created);
+        item.created = formatDistanceToNow(date, { addSuffix: true });
+      }
+      setActivities(activity);
+    };
+    fetchActivity();
   }, [pocketbase]);
 
   return (
@@ -40,7 +59,18 @@ const Home = () => {
 
       <div className="mt-8">
         <h2 className="text-2xl font-semibold mb-4">Recent Activity</h2>
-        <ActivityFeed />
+        <ul className="space-y-4">
+          {
+            activities.map((item, index) => (
+              <li key={index} className="bg-neutral-800 p-4 rounded-lg">
+                <p className="font-semibold">{item.event}</p>
+                <p className="text-sm text-neutral-400">
+                  {`${item.created}`}
+                </p>
+              </li>
+            ))
+          }
+        </ul>
       </div>
     </div>
   );
@@ -56,19 +86,6 @@ const DashboardCard = ({ title, value }: DashboardCardProps) => (
     <h3 className="text-lg font-semibold mb-2">{title}</h3>
     <p className="text-3xl font-bold">{value}</p>
   </div>
-);
-
-const ActivityFeed = () => (
-  <ul className="space-y-4">
-    <li className="bg-neutral-800 p-4 rounded-lg">
-      <p className="font-semibold">New member joined</p>
-      <p className="text-sm text-neutral-400">2 hours ago</p>
-    </li>
-    <li className="bg-neutral-800 p-4 rounded-lg">
-      <p className="font-semibold">Project "Web Dev 101" created</p>
-      <p className="text-sm text-neutral-400">1 day ago</p>
-    </li>
-  </ul>
 );
 
 export default Home;
