@@ -106,12 +106,12 @@ const Projects = () => {
           </select>
         </div>
         <div className="flex flex-col mt-4">
-          <label className="text-sm font-semibold">GitHub</label>
-          <input name="github" type="url" className="bg-neutral-800 text-neutral-100 p-2 rounded-lg mt-2" required />
+          <label className="text-sm font-semibold">GitHub URL</label>
+          <input name="github" type="url" className="bg-neutral-800 text-neutral-100 p-2 rounded-lg mt-2" />
         </div>
         <div className="flex flex-col mt-4">
-          <label className="text-sm font-semibold">Demo</label>
-          <input name="demo" type="url" className="bg-neutral-800 text-neutral-100 p-2 rounded-lg mt-2" required />
+          <label className="text-sm font-semibold">Demo URL</label>
+          <input name="demo" type="url" className="bg-neutral-800 text-neutral-100 p-2 rounded-lg mt-2" />
         </div>
         <button type="submit" className="bg-blue-500 text-white p-2 rounded-lg mt-4">Submit</button>
       </form>
