@@ -59,7 +59,7 @@ const Attendance = () => {
   return (
     <div>
       <h1>Attendance</h1>
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         <div className="bg-neutral-800 p-4 rounded-lg max-w-[35rem]">
           <h2>Your Score</h2>
           <p className="text-4xl font-bold mt-2">

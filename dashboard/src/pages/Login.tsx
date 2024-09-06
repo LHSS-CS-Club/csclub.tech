@@ -37,10 +37,10 @@ const Login = () => {
   return (
     <div className="flex justify-center items-center h-screen">
       <form
-        className="p-8 flex flex-col gap-4 w-1/2 max-w-96 shadow-black rounded-lg"
+        className="p-8 flex flex-col gap-4 w-full sm:max-w-96 shadow-black rounded-lg"
         onSubmit={handleLogin}
       >
-        <h2 className="text-[5rem] text-transparent bg-clip-text bg-gradient-to-b to-[#636280] from-white text-center font-[800]">
+        <h2 className="md:text-6xl text-5xl lg:text-7xl pb-8 text-transparent bg-clip-text bg-gradient-to-b to-[#636280] from-white text-center font-[800]">
           Log In
         </h2>
         <input

@@ -69,7 +69,7 @@ const Lessons: React.FC = () => {
         {rooms.map((room, id) => (
           <div key={`lessons-room-${id}`}>
             <h2 className='text-xl font-bold'>{room.title}</h2>
-            <div className='grid gap-4 mt-4'>
+            <div className='grid gap-4 mt-4 overflow-scroll'>
               {
                 (room.lessons.length === 0) ? <p>No lessons found.</p> : null
               }

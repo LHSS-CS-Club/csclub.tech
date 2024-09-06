@@ -58,7 +58,7 @@ export const Side = () => {
   };
 
   return (
-    <div className="!w-[20vw] p-4 flex flex-col gap-1">
+    <div className="md:w-[20vw] p-4 grid grid-cols-2 sm:grid-cols-3 md:flex md:flex-col gap-1">
       {links.map((link, index) => (
         <Link to={link.href} key={index} className={`p-2 text-neutral-400 hover:text-white hover:bg-neutral-700 transition-all hover:no-underline ${(location.pathname === link.href) ? "font-bold text-white bg-neutral-700 rounded-md" : ""}`}>{link.name}</Link>
       ))}

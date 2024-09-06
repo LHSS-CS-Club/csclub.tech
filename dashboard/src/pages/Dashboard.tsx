@@ -9,14 +9,14 @@ const Dashboard = () => {
   return (
     <div>
       <Top />
-      <div className='flex'>
+      <div className='flex flex-col md:flex-row'>
         <Side />
         {(authStore.isValid) ? 
-          <div className='p-6 w-[75vw]'>
+          <div className='p-6 w-screen md:w-[75vw]'>
             <Outlet />
           </div>
           : 
-          <div className='p-6 w-[75vw]'>
+          <div className='p-6 w-screen md:w-[75vw]'>
             <h1>You are not logged in!</h1>
             <p>Log in <Link to='/login'>here.</Link></p>
           </div>

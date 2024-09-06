@@ -67,10 +67,10 @@ const Signup = () => {
     <div className="flex justify-center items-center h-screen">
       <Toaster richColors theme="dark" />
       <form
-        className="p-8 flex flex-col gap-4 w-1/2 max-w-96 shadow-black rounded-lg"
+        className="p-8 flex flex-col gap-4 w-1/2 sm:max-w-96 shadow-black rounded-lg"
         onSubmit={handleSignup}
       >
-        <h2 className="text-[5rem] text-transparent bg-clip-text bg-gradient-to-b to-[#636280] from-white text-center font-[800]">
+        <h2 className="md:text-6xl text-5xl lg:text-7xl pb-8 text-[5rem] text-transparent bg-clip-text bg-gradient-to-b to-[#636280] from-white text-center font-[800]">
           Sign Up
         </h2>
         <input
